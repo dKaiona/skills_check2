@@ -1,8 +1,8 @@
 module.exports = {
-    get_inventory: (req, res) => {
+    get_inventory: async (req, res) => {
         const db = req.app.get('db')
 
-        db.get_inventory()
+       await db.get_inventory()
         .then(products => {res.status(200).send(products)})
         .catch(err => console.log(`controller.get_inventory: ${err}`))
     },

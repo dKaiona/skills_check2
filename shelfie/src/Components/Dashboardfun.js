@@ -12,7 +12,7 @@ export default class Dashboardfun extends Component{
     }
     
     deleteItem = () => {
-        axios.delete(`/api/inventory?id=${this.props.products}`)
+        axios.delete(`/api/inventory?id=${this.props.products[0].id}`)
         console.log(111111, this.props.products)
     }
     render () {
