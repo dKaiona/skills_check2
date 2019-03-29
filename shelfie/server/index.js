@@ -14,5 +14,6 @@ massive(CONNECTION_STRING)
 
 app.get('/api/inventory', controller.get_inventory)
 app.post('/api/product', controller.create_product)
+app.delete('/api/inventory', controller.delete)
 
 app.listen(SERVER_PORT, () => console.log(`Flying on port ${SERVER_PORT}`))

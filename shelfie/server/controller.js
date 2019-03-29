@@ -13,5 +13,12 @@ module.exports = {
         .then(() => { res.sendStatus(201)})
         .catch(err => console.log('Failed to Create', err))
 
+    },
+    delete: async (req, res) => {
+        const db = req.app.get('db')
+
+        await db.delete(req.query.id)
+        .then(() => { res.sendStatus(200)})
+        .catch(err => console.log('failed to delete', err))
     }
 }

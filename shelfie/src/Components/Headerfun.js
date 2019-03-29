@@ -3,8 +3,8 @@ import React, {Component} from 'react'
 export default class Headerfun extends Component {
     render () {
         return (
-            <div>
-                <h1>Header</h1>
+            <div className= 'header'>
+                <h1>Shelfie</h1>
             </div>
         )
     }

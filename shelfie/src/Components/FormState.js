@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios';
 
 export default class FormState extends Component {
     constructor(props) {
@@ -7,7 +8,7 @@ export default class FormState extends Component {
         this.state = {
             name: '',
             price: 0,
-            imgurl: ''
+            img: ''
         }
     }
 
@@ -20,17 +21,32 @@ export default class FormState extends Component {
         this.setState({
             name: '',
             price: 0,
-            imgurl: ''
+            img: ''
         })
     }
+        createItem = (event) => {
+            event.preventDefault()
+            axios.post('/api/product', this.state)
+            .then(res => {
+                this.setState({
+                    name: '',
+                    price: 0,
+                    img: ''
+                })
+            })
+            .catch(err => console.log('failed in formstate', err))
+        }
 
-    render() {
+        
+        
+        render() {
+            const didMount = this.props.getRequest()
         return(
-            <div>
+            <div className = 'form'>
                 <form onSubmit={this.createItem}>
                 <input onChange={this.handleInput} type='text' name ='name'placeholder= 'name'/>
                 <input onChange={this.handleInput} type='number' name = 'price' placeholder= 'price'/>
-                <input onChange={this.handleInput} type='text' name = 'imgurl' placeholder= 'img'/>
+                <input onChange={this.handleInput} type='text' name = 'img' placeholder= 'img'/>
                 <button type='submit'>Add to Inventory</button>
                 </form>
                 <button onClick={this.handleCancelClick}>Cancel</button>

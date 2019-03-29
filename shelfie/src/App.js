@@ -28,8 +28,10 @@ componentDidMount = () => {
       <HashRouter>
       <div className="App">
       <Header/>
-      <Dashboard products={this.state.products}/>
+      <section className = 'flexThem'>
+      <Dashboard products={this.state.products} />
       <Form getRequest={this.componentDidMount}/>
+      </section>
       </div>
       </HashRouter>
     );
